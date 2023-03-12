@@ -35,7 +35,15 @@ const Availableusers = () => {
       body: JSON.stringify({
         userIdFromDashBoard,
       }),
-    });
+    }).then(async (res) => {
+      if (res.ok) {
+        const deletedUser = await res.json();
+        const users = [...getUsers];
+        const filteredUser = users.filter((_) => _._id != deletedUser._id);
+        setGetUsers(filteredUser);
+      }
+    })
+    .catch((e) => console.log(e));
   };
 
   const Loginbutton = () => {
