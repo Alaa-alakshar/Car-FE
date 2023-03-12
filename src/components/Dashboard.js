@@ -63,7 +63,7 @@ const Dashboard = () => {
       <div className="sidebar">
         <div className="logo-details">
           <i className=""></i>
-          <span className="logo_name1">Bike</span>
+          <span className="logo_name1">car</span>
           <span className="logo_name">Book</span>
         </div>
         <ul className="nav-links">
@@ -81,16 +81,16 @@ const Dashboard = () => {
           </li>
 
           <li>
-            <NavLink className="dashlinks" to="/getrentbikesforadmin">
-              <i class="fa-sharp fa-solid fa-motorcycle"></i>
+            <NavLink className="dashlinks" to="/getrentcarsforadmin">
+              <i class="fa-sharp fa-solid fa-car"></i>
               <span className="allLinks_name">Available Rent Cars</span>
             </NavLink>
           </li>
 
           <li>
-            <NavLink className="dashlinks" to="/rentbikesreports">
+            <NavLink className="dashlinks" to="/rentcarsreports">
               <i class="fa-solid fa-sack-dollar"></i>
-              <span className="allLinks_name">Rent Bikes Income</span>
+              <span className="allLinks_name">Rent cars Income</span>
             </NavLink>
           </li>
           <li>
@@ -123,8 +123,8 @@ const Dashboard = () => {
           <h3>Go To Add Cars Tab In Side Menu To Add Cars In Database</h3>
           <br />
           <h3>
-            Go To Rent Bikes Tab In Side Menu To Generate Income Reports of
-            Rented Bikes In Database
+            Go To Rent cars Tab In Side Menu To Generate Income Reports of
+            Rented cars In Database
           </h3>
           <br />
           <h3>

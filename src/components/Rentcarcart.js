@@ -4,13 +4,13 @@ import Stripe from "react-stripe-checkout";
 
 import { UserContext } from "../App"
 
-const Rentbikecart = () => {
+const Rentcarcart = () => {
 
     const {state, dispatch} = useContext(UserContext)
 
     const [cartUser, setCartUser] = useState([]);
     const [items, setItems] = useState([]);
-    let itemsPrice, idOfRentedBike, reqHours;
+    let itemsPrice, idOfRentedcar, reqHours;
 
     const getCartData = async () =>{
         try {
@@ -39,7 +39,7 @@ const Rentbikecart = () => {
     
     items.map(items =>{
         itemsPrice = items.totalbill;
-        idOfRentedBike = items.rentbikeid;
+        idOfRentedcar = items.rentcarid;
         reqHours = items.requiredhours;
     })
 
@@ -52,7 +52,7 @@ const Rentbikecart = () => {
                 body: JSON.stringify({
                     token: token.id, 
                     amount: itemsPrice,
-                    idRentedBike: idOfRentedBike,
+                    idRentedcar: idOfRentedcar,
                     hoursRequired: reqHours
                 })
             })
@@ -101,11 +101,11 @@ const Rentbikecart = () => {
         <>
              <header className="header">
                 <div id="menu-btn" className="fas fa-bars"></div>
-                <NavLink className="logo" to="/"> <span>Bike</span>Book </NavLink>
+                <NavLink className="logo" to="/"> <span>car</span>Book </NavLink>
 
                 <nav className="navbar">
                 <NavLink to="/">Home</NavLink>
-                <NavLink to="/rentbike">Rent Bikes</NavLink>
+                <NavLink to="/rentcar">Rent cars</NavLink>
                 </nav>
 
                 <div id="login-btn">
@@ -120,13 +120,13 @@ const Rentbikecart = () => {
                 {items.map((items) => 
                     <div className = "salecartLidiv"  key={items._id}>
                             <ul>
-                                <li style={{wordSpacing: "10px"}}>Brand: {items.brand} --- Model: {items.model} --- Hours: {items.requiredhours} --- RentPerHour: {items.rentperhour}Taka --- TotalBill: {items.totalbill}Taka   <button className="btn"><i className="fa fa-trash"></i></button></li>
+                                <li style={{wordSpacing: "10px"}}>Brand: {items.brand} --- Model: {items.model} --- Hours: {items.requiredhours} --- RentPerHour: {items.rentperhour}$ --- TotalBill: {items.totalbill}$   <button className="btn"><i className="fa fa-trash"></i></button></li>
                             </ul> 
                         </div>
                      
             )}
                         <div style={{padding: "30px",  textAlign:"center"}}>
-                            <h2>Pay Through Credit / Debit Biked</h2><br/>
+                            <h2>Pay Through Credit / Debit card</h2><br/>
                             <Stripe 
                                 stripeKey = "pk_test_51Jyb5UBvc4Qazj8jy6qimLop4epxe5jziUD3ixj5ISycjjD6yYVGZhk688Pz9Lna32VTHbSHxRwkrvNNnnnr96P000M68u5jcd"
                                 token = {tokenHandler}
@@ -138,4 +138,4 @@ const Rentbikecart = () => {
     )
 }
 
-export default Rentbikecart
+export default Rentcarcart

@@ -3,35 +3,51 @@ import { NavLink } from "react-router-dom";
 
 import { AdminContext } from "../../App";
 
-const Rentbikereports = () => {
+const Getrentcars = () => {
   const { adminState, dispatchadmin } = useContext(AdminContext);
 
-  const [income, setIncome] = useState([]);
-  let allsoldItems = [];
+  const [getcars, setGetcars] = useState([]);
 
-  const getrentbikeincome = async () => {
+  const getallrenttcars = async () => {
     try {
-      const res = await fetch("/getrentbikeincome", {
+      const res = await fetch("/getAvailableRentcars", {
         method: "GET",
       });
 
       const data = await res.json();
-
-      setIncome(data);
+      setGetcars(data);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    getrentbikeincome();
+    getallrenttcars();
   }, []);
 
-  income.map((income) => {
-    income.soldItems.map((soldItems) => {
-      allsoldItems.push(soldItems);
-    });
-  });
+  let carIdFromDashBoard;
+  const deleteUser = (e) => {
+    carIdFromDashBoard = e.target.id;
+
+    return fetch("/deleteRentcarFromDashboard", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        carIdFromDashBoard,
+      }),
+    })
+      .then(async (res) => {
+        if (res.ok) {
+          const deletedCar = await res.json();
+          const cars = [...getcars];
+          const filteredCars = cars.filter((_) => _._id != deletedCar._id);
+          setGetcars(filteredCars);
+        }
+      })
+      .catch((e) => console.log(e));
+  };
 
   const Loginbutton = () => {
     if (adminState) {
@@ -62,7 +78,7 @@ const Rentbikereports = () => {
       <div className="sidebar">
         <div className="logo-details">
           <i className=""></i>
-          <span className="logo_name1">Bike</span>
+          <span className="logo_name1">car</span>
           <span className="logo_name">Book</span>
         </div>
         <ul className="nav-links">
@@ -79,15 +95,15 @@ const Rentbikereports = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink className="dashlinks" to="/getrentbikesforadmin">
-              <i class="fa-sharp fa-solid fa-motorcycle"></i>
-              <span className="allLinks_name">Available Rent Bikes</span>
+            <NavLink className="dashlinks" to="/getrentcarsforadmin">
+              <i class="fa-sharp fa-solid fa-car"></i>
+              <span className="allLinks_name">Available Rent Cars</span>
             </NavLink>
           </li>
           <li>
-            <NavLink className="dashlinks" to="/rentbikesreports">
+            <NavLink className="dashlinks" to="/rentcarsreports">
               <i class="fa-solid fa-sack-dollar"></i>
-              <span className="allLinks_name">Rent Bikes Income</span>
+              <span className="allLinks_name">Rent cars Income</span>
             </NavLink>
           </li>
           <li>
@@ -116,7 +132,7 @@ const Rentbikereports = () => {
 
         <div className="salecartableDiv">
           <h1 className="heading">
-            <span>Rented Bikes Income Report</span>
+            <span>Available Rent cars</span>
           </h1>
 
           <table className="salecartable">
@@ -124,20 +140,30 @@ const Rentbikereports = () => {
               <tr>
                 <th>BRAND </th>
                 <th>MODEL </th>
-                <th>RETAIL </th>
-                <th>BOOKED HOURS </th>
-                <th>INCOME </th>
+                <th>RENT </th>
+                <th>PRICE </th>
+                <th>AVAILABILITY </th>
+                <th>DELETE </th>
               </tr>
             </thead>
 
-            {allsoldItems.map((allsoldItems) => (
-              <tbody key={allsoldItems._id}>
+            {getcars.map((getcars) => (
+              <tbody key={getcars._id}>
                 <tr>
-                  <td>{allsoldItems.brand}</td>
-                  <td>{allsoldItems.model}</td>
-                  <td>{allsoldItems.retailPricePerItem} Taka</td>
-                  <td>{allsoldItems.bookedHours}</td>
-                  <td>{allsoldItems.totalIncome} Taka</td>
+                  <td>{getcars.brand}</td>
+                  <td>{getcars.model}</td>
+                  <td>{getcars.rent}</td>
+                  <td>{getcars.price} $</td>
+                  <td>{getcars.availability} hours</td>
+                  <td>
+                    <button
+                      id={getcars._id}
+                      onClick={deleteUser}
+                      className="btn"
+                    >
+                      <i className="fa fa-trash"></i>
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             ))}
@@ -148,4 +174,4 @@ const Rentbikereports = () => {
   );
 };
 
-export default Rentbikereports;
+export default Getrentcars;

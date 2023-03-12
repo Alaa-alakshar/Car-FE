@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import { UserContext } from "../App"
 
-const ExploreRentBike = () => {
+const ExploreRentcar = () => {
 
     const {state, dispatch} = useContext(UserContext)
 
@@ -26,17 +26,17 @@ const ExploreRentBike = () => {
 
 
 
-    const [renttbikesData, setrenttbikesData] = useState([]);
+    const [renttcarsData, setrenttcarsData] = useState([]);
 
-    const exploreRentBike = async () =>{
+    const exploreRentcar = async () =>{
         try {
-            const res = await fetch ('/exploreRentBikeData', {
+            const res = await fetch ('/exploreRentcarData', {
                 method: 'GET',
             });
 
             const data = await res.json();
 
-            setrenttbikesData(data)
+            setrenttcarsData(data)
           
 
             if(!res.status === 200){
@@ -50,7 +50,7 @@ const ExploreRentBike = () => {
     }
 
     useEffect(() => {
-        exploreRentBike();
+        exploreRentcar();
     }, [])
 
     
@@ -59,7 +59,7 @@ const ExploreRentBike = () => {
     const handleClick = () =>{
         if(alertDiv.style.display === "none"){
             alertDiv.style.display = "flex"
-            window.alert("Please signin to rent the bike!");
+            window.alert("Please signin to rent the car!");
         }
         else{
             alertDiv.style.display = "flex"
@@ -82,11 +82,11 @@ const ExploreRentBike = () => {
 
             <header className="header">
             <div id="menu-btn" className="fas fa-bars"></div>
-            <NavLink className="logo" to="/"> <span>Bike</span>Book </NavLink>
+            <NavLink className="logo" to="/"> <span>car</span>Book </NavLink>
 
             <nav className="navbar">
                 <NavLink  to="/">Home</NavLink>
-                <NavLink to="/rentbike">Rent Bike</NavLink>
+                <NavLink to="/rentcar">Rent car</NavLink>
             </nav>
             <div id="login-btn">
                 <Loginbutton />
@@ -95,19 +95,19 @@ const ExploreRentBike = () => {
 
             <div id="alertDiv" >
             <p>Have you liked it?</p>
-            <button className='btn' onClick={hideAlert}><NavLink to="/rentbike" className="nav-link">Rent Now</NavLink></button>
+            <button className='btn' onClick={hideAlert}><NavLink to="/rentcar" className="nav-link">Rent Now</NavLink></button>
         </div>
 
 
-        <div className="exploreBikesDiv">
+        <div className="explorecarsDiv">
 
-        {renttbikesData.map((renttbikesData, index) =>  
+        {renttcarsData.map((renttcarsData, index) =>  
         
-        <div className = "exploreBikesImg"  key={renttbikesData._id}>    
+        <div className = "explorecarsImg"  key={renttcarsData._id}>    
 
-            <img src={renttbikesData.filePath} alt="" style={{width: "80%", height: "70%"}} onClick={handleClick}/>
-            <h4><b>{renttbikesData.brand}</b></h4>
-            <p>{renttbikesData.model}</p>
+            <img src={renttcarsData.filePath} alt="" style={{width: "80%", height: "70%"}} onClick={handleClick}/>
+            <h4><b>{renttcarsData.brand}</b></h4>
+            <p>{renttcarsData.model}</p>
             </div>
         )}
 
@@ -116,4 +116,4 @@ const ExploreRentBike = () => {
     )
 }
 
-export default ExploreRentBike
+export default ExploreRentcar

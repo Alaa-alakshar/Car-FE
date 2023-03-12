@@ -42,12 +42,12 @@ const Signin = () => {
 
         <NavLink className="logo" to="/">
           {" "}
-          <span>Bike</span>Book{" "}
+          <span>car</span>Book{" "}
         </NavLink>
 
         <nav className="navbar">
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/exploreRentBikes">Bike Showcase</NavLink>
+          <NavLink to="/exploreRentcars">car Showcase</NavLink>
         </nav>
 
         <div id="login-btn">

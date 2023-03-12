@@ -59,11 +59,11 @@ const Signup = () => {
 
 <div id="menu-btn" className="fas fa-bars"></div>
 
-<NavLink className="logo" to="/"> <span>Bike</span>Book </NavLink>
+<NavLink className="logo" to="/"> <span>car</span>Book </NavLink>
 
 <nav className="navbar">
     <NavLink  to="/">Home</NavLink>
-    <NavLink  to="/exploreRentBikes">Bike Showcase</NavLink>
+    <NavLink  to="/exploreRentcars">car Showcase</NavLink>
 </nav>
 
 <div id="login-btn">
