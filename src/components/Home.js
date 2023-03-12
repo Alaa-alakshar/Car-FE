@@ -112,9 +112,6 @@ const Home = () => {
         <NavLink className="logo" to="/">
           Cars<span> Book</span>
         </NavLink>
-        <h1 style={{ color: "red !important", background: "red" }}>
-          erwjtziorhghguioheuioh
-        </h1>
         <nav className="navbar">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/rentcar">Rent cars</NavLink>
