@@ -110,11 +110,11 @@ const Mycart = () => {
         <>
             <header className="header">
                 <div id="menu-btn" className="fas fa-bars"></div>
-                <NavLink className="logo" to="/"> <span>Bike</span>Book </NavLink>
+                <NavLink className="logo" to="/"> <span>car</span>Book </NavLink>
 
                 <nav className="navbar">
                 <NavLink  to="/">Home</NavLink>
-                <NavLink to="/rentbike">Rent Bikes</NavLink>
+                <NavLink to="/rentcar">Rent cars</NavLink>
                 </nav>
 
                 <div id="login-btn">
@@ -130,13 +130,13 @@ const Mycart = () => {
             {items.map((items) => 
                     <div className = "salecartLidiv"  key={items._id} >
                             <ul>
-                                <li style={{wordSpacing: "10px"}}>Brand: {items.brand} --- Model: {items.model} --- Quantity: {items.quantity} --- Price: {items.price}Taka <button id={items._id} onClick={deleteItem} className="btn"><i className="fa fa-trash"></i></button></li>
+                                <li style={{wordSpacing: "10px"}}>Brand: {items.brand} --- Model: {items.model} --- Quantity: {items.quantity} --- Price: {items.price}$ <button id={items._id} onClick={deleteItem} className="btn"><i className="fa fa-trash"></i></button></li>
                             </ul> 
                         </div>
                      
             )}
                         <div style={{padding: "30px",  textAlign:"center"}}>
-                            <h2>Pay Through Credit / Debit Biked</h2><br/>
+                            <h2>Pay Through Credit / Debit card</h2><br/>
                             <Stripe 
                                 stripeKey = "pk_test_51Jyb5UBvc4Qazj8jy6qimLop4epxe5jziUD3ixj5ISycjjD6yYVGZhk688Pz9Lna32VTHbSHxRwkrvNNnnnr96P000M68u5jcd"
                                 token = {tokenHandler}

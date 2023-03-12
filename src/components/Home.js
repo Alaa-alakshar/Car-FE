@@ -110,12 +110,12 @@ const Home = () => {
         <div id="menu-btn" className="fas fa-bars"></div>
 
         <NavLink className="logo" to="/">
-          Cars<span>.com</span>
+          Cars<span> Book</span>
         </NavLink>
 
         <nav className="navbar">
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/rentbike">Rent Bikes</NavLink>
+          <NavLink to="/rentcar">Rent cars</NavLink>
           <a href="#services">Testimonial</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -137,7 +137,7 @@ const Home = () => {
           alt=""
         /> */}
 
-        <NavLink className="btn" to="/exploreRentBikes">
+        <NavLink className="btn" to="/exploreRentcars">
           Car Showcase
         </NavLink>
       </section>
@@ -168,7 +168,7 @@ const Home = () => {
         </div>
 
         <div className="icons">
-          <i class="fa-sharp fa-solid fa-motorcycle"></i>
+          <i class="fa-sharp fa-solid fa-car"></i>
           <div className="content">
             <h3>1500+</h3>
             <p>Available Cars</p>
@@ -383,7 +383,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="credit"> Made with ❤️ | All rights reserved </div>
+        <div className="credit"> Made with ❤️ | All rights reserved &copy; </div>
       </section>
     </>
   );

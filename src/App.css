@@ -1,0 +1,92 @@
+p,a,h1,h2,h3,h4,h5,h6, th,tr,td{
+    color: #fff !important;
+}
+.logo{
+    color: #ff6a00 !important;
+}
+.logo span{
+    color: #262626 !important;
+}
+.sidebar, .home-section{
+    float: left;
+}
+.salecartableDiv{
+    margin-top: 10% !important;
+    background-color: #333 !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+.home-section{
+    padding-top: 0;
+}
+.home, .icons-container, .services, .contact, .footer{
+    background-color: #262626 !important;
+}
+.services .box-container{
+    background-color: #262626 !important;
+}
+.services .box-container .box ,.icons-container .icons{
+    background-color: #333;
+}
+.contact .row form{
+    background-color: #333;
+}
+.btn{
+    background-color: #151515;
+}
+.btn:hover{
+    background-color: #ff6a00;
+
+}
+.credit{
+    color: #fff !important;
+}
+.heading span::before{
+    background: #252525;
+}
+form input,form textarea{
+    background-color: #181818;
+    color: #fff !important;
+}
+.header{
+    background-color: #f2f2f2;
+}
+.navbar a{
+    color: #333 !important;
+}
+.maincontainer{
+    background-color: #262626 !important;
+}
+.firstcontainer{
+    background-color: #333 !important;
+}
+.user-details .input-box input{
+    background-color: #181818;
+    border: none !important;
+}
+.home-section{
+    background-color: #262626 !important;
+}
+.home-section nav{
+    color: #999 !important;
+}
+.home-section nav .profile-details{
+    border: none !important ;
+    background-color: #181818 !important;
+}
+.home-section nav .profile-details span{
+    color: #fff;
+}
+.home-content .sales-boxes .recent-sales{
+    background-color: #333 !important;
+}
+.addcarform label{
+    color: #fff !important;
+}
+.addcarform input{
+    padding: 6px 10px !important;
+    border-radius: 8px;
+}
+.dashlinks i{
+    color: #fff !important;
+}

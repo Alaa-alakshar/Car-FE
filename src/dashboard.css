@@ -246,7 +246,7 @@ nav .profile-details .admin_name{
   margin-bottom: 26px;
 }
 
-.addbikeform label{
+.addcarform label{
   float: left;
   color: #1a1a1a;
   font-size: 15px;
@@ -257,7 +257,7 @@ nav .profile-details .admin_name{
 }
 
 
-.addbikeform input{
+.addcarform input{
   border: 1px solid #1a1a1a;
   border-radius: 3px;
   padding: 2px;

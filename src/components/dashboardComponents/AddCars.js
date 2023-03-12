@@ -10,7 +10,7 @@ const AddCars = () => {
 
   const history = useHistory();
   const [file, setFile] = useState();
-  const [bike, setBike] = useState({
+  const [car, setcar] = useState({
     brand: "",
     model: "",
     year: "",
@@ -30,12 +30,12 @@ const AddCars = () => {
     name = e.target.name;
     value = e.target.value;
 
-    setBike({ ...bike, [name]: value });
+    setcar({ ...car, [name]: value });
   };
 
   const handleFile = (e) => {
     const myfile = e.target.files[0];
-    setFile({ ...bike, myfile });
+    setFile({ ...car, myfile });
   };
 
   const postData = async (e) => {
@@ -54,7 +54,7 @@ const AddCars = () => {
     formData.append("quantity", file.quantity);
     formData.append("myfile", file.myfile);
 
-    const res = await fetch("/addbikes", {
+    const res = await fetch("/addcars", {
       method: "POST",
       body: formData,
     });
@@ -70,7 +70,7 @@ const AddCars = () => {
     rent: "",
   };
   const [rentFile, setRentFile] = useState();
-  const [rentbike, setRentBike] = useState(initialState);
+  const [rentcar, setRentcar] = useState(initialState);
 
   let rentName, rentValue;
 
@@ -78,12 +78,12 @@ const AddCars = () => {
     rentName = e.target.name;
     rentValue = e.target.value;
 
-    setRentBike({ ...rentbike, [rentName]: rentValue });
+    setRentcar({ ...rentcar, [rentName]: rentValue });
   };
 
   const handleRentFile = (e) => {
     const myrentfile = e.target.files[0];
-    setRentFile({ ...rentbike, myrentfile });
+    setRentFile({ ...rentcar, myrentfile });
   };
 
   const postRentData = async (e) => {
@@ -98,14 +98,14 @@ const AddCars = () => {
     rentData.append("rent", rentFile.rent);
     rentData.append("myrentfile", rentFile.myrentfile);
 
-    const res = await fetch("/addrentbikes", {
+    const res = await fetch("/addrentcars", {
       method: "POST",
       body: rentData,
     })
       .then((res) => {
         if (res.ok) {
           setOpen(true);
-          setRentBike(initialState);
+          setRentcar(initialState);
         }
       })
       .catch((e) => console.log(e));
@@ -148,7 +148,7 @@ const AddCars = () => {
       <div className="sidebar">
         <div className="logo-details">
           ;<i className=""></i>
-          <span className="logo_name1">Bike</span>
+          <span className="logo_name1">car</span>
           <span className="logo_name">Book</span>
         </div>
         <ul className="nav-links">
@@ -165,15 +165,15 @@ const AddCars = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink className="dashlinks" to="/getrentbikesforadmin">
-              <i class="fa-sharp fa-solid fa-motorcycle"></i>
-              <span className="allLinks_name">Available Rent Bikes</span>
+            <NavLink className="dashlinks" to="/getrentcarsforadmin">
+              <i class="fa-sharp fa-solid fa-car"></i>
+              <span className="allLinks_name">Available Rent cars</span>
             </NavLink>
           </li>
           <li>
-            <NavLink className="dashlinks" to="/rentbikesreports">
+            <NavLink className="dashlinks" to="/rentcarsreports">
               <i class="fa-solid fa-sack-dollar"></i>
-              <span className="allLinks_name">Rent Bikes Income</span>
+              <span className="allLinks_name">Rent cars Income</span>
             </NavLink>
           </li>
           <li>
@@ -209,7 +209,7 @@ const AddCars = () => {
               </h1>
               <form
                 method="POST"
-                className="addbikeform"
+                className="addcarform"
                 name="rentform"
                 id="myrentform"
               >
@@ -218,9 +218,9 @@ const AddCars = () => {
                   type="text"
                   name="brand"
                   id="brand"
-                  value={rentbike.brand}
+                  value={rentcar.brand}
                   onChange={handleRentInputs}
-                  placeholder="Enter Bike Brand"
+                  placeholder="Enter car Brand"
                 />
                 <br />
                 <label htmlFor="lname">Model: </label>
@@ -228,9 +228,9 @@ const AddCars = () => {
                   type="text"
                   name="model"
                   id="model"
-                  value={rentbike.model}
+                  value={rentcar.model}
                   onChange={handleRentInputs}
-                  placeholder="Enter Bike Model"
+                  placeholder="Enter car Model"
                 />
                 <br />
                 <label htmlFor="fname">Year: </label>
@@ -238,7 +238,7 @@ const AddCars = () => {
                   type="text"
                   name="year"
                   id="year"
-                  value={rentbike.year}
+                  value={rentcar.year}
                   onChange={handleRentInputs}
                   placeholder="Manufacturing Year"
                 />
@@ -248,9 +248,9 @@ const AddCars = () => {
                   type="text"
                   name="color"
                   id="color"
-                  value={rentbike.color}
+                  value={rentcar.color}
                   onChange={handleRentInputs}
-                  placeholder="Enter Bike Color"
+                  placeholder="Enter car Color"
                 />
                 <br />
                 <label htmlFor="lname">Seats: </label>
@@ -258,27 +258,27 @@ const AddCars = () => {
                   type="text"
                   name="seats"
                   id="seats"
-                  value={rentbike.seats}
+                  value={rentcar.seats}
                   onChange={handleRentInputs}
-                  placeholder="Enter Bike Seats"
+                  placeholder="Enter car Seats"
                 />
                 <br />
-                <label htmlFor="lname">Bike Price: </label>
+                <label htmlFor="lname">car Price: </label>
                 <input
                   type="text"
                   name="price"
                   id="price"
-                  value={rentbike.price}
+                  value={rentcar.price}
                   onChange={handleRentInputs}
-                  placeholder="Enter bike price"
+                  placeholder="Enter car price"
                 />
                 <br />
-                <label htmlFor="lname">Bike Rent: </label>
+                <label htmlFor="lname">car Rent: </label>
                 <input
                   type="text"
                   name="rent"
                   id="rent"
-                  value={rentbike.rent}
+                  value={rentcar.rent}
                   onChange={handleRentInputs}
                   placeholder="Enter rent per hour"
                 />

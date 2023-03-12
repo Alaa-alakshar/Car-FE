@@ -3,14 +3,14 @@ import { NavLink, useLocation, useHistory } from "react-router-dom";
 
 import { UserContext } from "../App"
 
-const Rentbikereviews = () => {
+const Rentcarreviews = () => {
 
     const {state, dispatch} = useContext(UserContext)
 
     let location = useLocation();
-    const selectedBikeId = location.state
+    const selectedcarId = location.state
     const [userData, setUserData] = useState({id:"", name:"", email:"", message:""});
-    const [renttbikesData, setrenttbikesData] = useState({
+    const [renttcarsData, setrenttcarsData] = useState({
         id: "",
         brand : "",
         model : "",
@@ -23,17 +23,17 @@ const Rentbikereviews = () => {
         fileType : "",
         fileSize : ""
     });
-    const [allrenttbikeReviews, setAllrenttbikeReviews] = useState([]);
+    const [allrenttcarReviews, setAllrenttcarReviews] = useState([]);
 
     const sendId = async () =>{
         try {
-            const res = await fetch("/sendReviewRentBikeId", {
+            const res = await fetch("/sendReviewRentcarId", {
                 method: "POST",
                 headers:{
                     "Content-Type" : "application/json"
                 },
                 body: JSON.stringify({
-                    selectedBikeId
+                    selectedcarId
                 })
             })
 
@@ -51,25 +51,25 @@ const Rentbikereviews = () => {
         sendId();
     }, [])
 
-    const reviewBikeData = async () =>{
+    const reviewcarData = async () =>{
         try {
-            const res = await fetch ('/getRentBikeReviews', {
+            const res = await fetch ('/getRentcarReviews', {
                 method: 'GET',
             });
 
             const data = await res.json();
-            setrenttbikesData({
-            id : data.findBike._id,
-            brand : data.findBike.brand,
-            model : data.findBike.model,
-            year : data.findBike.year,
-            color : data.findBike.color,
-            seats : data.findBike.seats,
-            rent : data.findBike.rent,
-            fileName : data.findBike.fileName,
-            filePath : data.findBike.filePath,
-            fileType : data.findBike.fileType,
-            fileSize : data.findBike.fileSize
+            setrenttcarsData({
+            id : data.findcar._id,
+            brand : data.findcar.brand,
+            model : data.findcar.model,
+            year : data.findcar.year,
+            color : data.findcar.color,
+            seats : data.findcar.seats,
+            rent : data.findcar.rent,
+            fileName : data.findcar.fileName,
+            filePath : data.findcar.filePath,
+            fileType : data.findcar.fileType,
+            fileSize : data.findcar.fileSize
             })
             
             setUserData({...userData, id:data.findUser._id, name:data.findUser.name, email:data.findUser.email})
@@ -84,20 +84,20 @@ const Rentbikereviews = () => {
         }
     }
     useEffect(() => {
-        reviewBikeData();
+        reviewcarData();
     }, [])
 
 
 
     const getallreviews = async () =>{
         try {
-            const res = await fetch ('/getallreviewsforselectedrentbike', {
+            const res = await fetch ('/getallreviewsforselectedrentcar', {
                 method: 'GET',
             });
 
             const data = await res.json();
 
-            setAllrenttbikeReviews(data.allReviews);
+            setAllrenttcarReviews(data.allReviews);
 
         }
         catch (error) {
@@ -126,13 +126,13 @@ const Rentbikereviews = () => {
 
         const {id, name, email, message}= userData;
 
-        const res = await fetch('/postrentbikereviews',{
+        const res = await fetch('/postrentcarreviews',{
             method:'POST',
             headers: {
                 "Content-Type" : "application/json"
             },
             body : JSON.stringify({
-                id, name, email, message, selectedBikeId
+                id, name, email, message, selectedcarId
             })
         });
 
@@ -177,10 +177,10 @@ const Rentbikereviews = () => {
         <>
             <header className="header">
                 <div id="menu-btn" className="fas fa-bars"></div>
-                <NavLink className="logo" to="/"> <span>Bike</span>Book </NavLink>
+                <NavLink className="logo" to="/"> <span>car</span>Book </NavLink>
                 <nav className="navbar">
                     <NavLink to="/">Home</NavLink>
-                    <NavLink to="/rentbike">Rent Bikes</NavLink>
+                    <NavLink to="/rentcar">Rent cars</NavLink>
                 </nav>
                 <div id="login-btn">
                 <Loginbutton />
@@ -191,13 +191,13 @@ const Rentbikereviews = () => {
             
             <div className = "reviewsdiv">    
 
-                <img src={renttbikesData.filePath} alt="" style={{width: "80%", height: "70%"}}/>
-                <h4><b>{renttbikesData.brand}</b></h4>
-                <p>Model : {renttbikesData.model}</p>
-                <p>Year : {renttbikesData.year}</p>
-                <p>Color : {renttbikesData.color}</p>
-                <p>Seats : {renttbikesData.seats}</p>
-                <p>Rent : {renttbikesData.rent}</p>
+                <img src={renttcarsData.filePath} alt="" style={{width: "80%", height: "70%"}}/>
+                <h4><b>{renttcarsData.brand}</b></h4>
+                <p>Model : {renttcarsData.model}</p>
+                <p>Year : {renttcarsData.year}</p>
+                <p>Color : {renttcarsData.color}</p>
+                <p>Seats : {renttcarsData.seats}</p>
+                <p>Rent : {renttcarsData.rent}</p>
 
             </div>
                    
@@ -205,10 +205,10 @@ const Rentbikereviews = () => {
         <section className="contact" id="contact">
             <h1 className="heading"><span>Reviews</span></h1>
 
-            {allrenttbikeReviews.map((allrenttbikeReviews) => 
-                    <div className = "reviewsli"  key={allrenttbikeReviews._id}>
+            {allrenttcarReviews.map((allrenttcarReviews) => 
+                    <div className = "reviewsli"  key={allrenttcarReviews._id}>
                             <ul>
-                                <li style={{wordSpacing: "10px"}}>{allrenttbikeReviews.name} :- {allrenttbikeReviews.comments}</li>
+                                <li style={{wordSpacing: "10px"}}>{allrenttcarReviews.name} :- {allrenttcarReviews.comments}</li>
                             </ul> 
                         </div>
                      
@@ -230,4 +230,4 @@ const Rentbikereviews = () => {
     )
 }
 
-export default Rentbikereviews
+export default Rentcarreviews

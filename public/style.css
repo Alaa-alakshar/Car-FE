@@ -74,7 +74,7 @@ section{
     grid-gap : 20px 20px;
 }
 
-.rentbikebiked{
+.rentcarcard{
     display : grid;
     grid-template-columns : auto auto auto auto;
     grid-template-areas : overlap;
@@ -83,7 +83,7 @@ section{
     padding : 125px 20px;
 }
 
-.bikedivRentbike{
+.cardivRentcar{
     display : block;
     background-color : #ffffff;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -95,7 +95,7 @@ section{
 }
 
 
-.specsDivRentbike{
+.specsDivRentcar{
     display : none;
     background-color : #ffffff;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -105,11 +105,11 @@ section{
     text-align : center;
     color: #1a1a1a;
 }
-.specsDivRentbike h4{
+.specsDivRentcar h4{
     color: #1a1a1a;
 }
 
-.formDivRentbike{
+.formDivRentcar{
     display : none;
     background-color : #ff6a00;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -189,7 +189,7 @@ section{
 }
 
 
-.bikedbtn{
+.cardbtn{
     display: inline-block;
     margin-top: 1rem;
     width: 120px;
@@ -203,14 +203,14 @@ section{
     text-align: center;
 }
 
-.bikedbtn:hover{
+.cardbtn:hover{
     background: #ff6a00;
     color: white;
 }
 
 
 
-.exploreBikesDiv{
+.explorecarsDiv{
     display : grid;
     grid-template-columns : auto auto auto auto;
     grid-template-areas : overlap;
@@ -220,7 +220,7 @@ section{
 }
 
 
-.exploreBikesImg{
+.explorecarsImg{
     background-color : #f1f1f1;
     box-shadow: 0 4px 8px 0 rgb(148, 144, 140);
     border-radius: 9px;

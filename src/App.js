@@ -8,16 +8,16 @@ import Dashboard from "./components/Dashboard";
 import AdminSignin from "./components/AdminSignin";
 import AdminSignout from "./components/AdminSignout";
 import AddCars from "./components/dashboardComponents/AddCars";
-import Rentbikereports from "./components/dashboardComponents/Rentbikereports";
+import Rentcarreports from "./components/dashboardComponents/Rentcarreports";
 import Availableusers from "./components/dashboardComponents/Availableusers";
-import Getrentbikes from "./components/dashboardComponents/Getrentbikes";
+import Getrentcars from "./components/dashboardComponents/Getrentcars";
 import Mycart from "./components/Mycart";
-import Rentabike from "./components/Rentabike";
-import Rentbikecart from "./components/Rentbikecart";
-import Rentbikereviews from "./components/Rentbikereviews";
+import Rentacar from "./components/Rentacar";
+import Rentcarcart from "./components/Rentcarcart";
+import Rentcarreviews from "./components/Rentcarreviews";
 import Signout from "./components/Signout";
-import ExploreRentBike from "./components/ExploreRentBike";
-
+import ExploreRentcar from "./components/ExploreRentcar";
+// comment
 import { initialState, reducer } from "../src/reducer/UseReducer";
 import {
   adminInitialState,
@@ -57,21 +57,21 @@ const App = () => {
           {" "}
           <Mycart />{" "}
         </Route>
-        <Route path="/rentbike">
+        <Route path="/rentcar">
           {" "}
-          <Rentabike />{" "}
+          <Rentacar />{" "}
         </Route>
-        <Route path="/rentbikecart">
+        <Route path="/rentcarcart">
           {" "}
-          <Rentbikecart />{" "}
+          <Rentcarcart />{" "}
         </Route>
-        <Route path="/rentbikereviews">
+        <Route path="/rentcarreviews">
           {" "}
-          <Rentbikereviews />{" "}
+          <Rentcarreviews />{" "}
         </Route>
-        <Route path="/exploreRentBikes">
+        <Route path="/exploreRentcars">
           {" "}
-          <ExploreRentBike />{" "}
+          <ExploreRentcar />{" "}
         </Route>
       </UserContext.Provider>
 
@@ -92,17 +92,17 @@ const App = () => {
           {" "}
           <AddCars />{" "}
         </Route>
-        <Route path="/rentbikesreports">
+        <Route path="/rentcarsreports">
           {" "}
-          <Rentbikereports />{" "}
+          <Rentcarreports />{" "}
         </Route>
         <Route path="/availableusers">
           {" "}
           <Availableusers />{" "}
         </Route>
-        <Route path="/getrentbikesforadmin">
+        <Route path="/getrentcarsforadmin">
           {" "}
-          <Getrentbikes />{" "}
+          <Getrentcars />{" "}
         </Route>
       </AdminContext.Provider>
     </>

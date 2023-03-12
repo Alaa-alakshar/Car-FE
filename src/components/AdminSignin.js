@@ -47,7 +47,7 @@ const AdminSignin = () => {
 
 <div id="menu-btn" className="fas fa-bars"></div>
 
-<a href="#" className="logo"> <span>Bike</span>Book </a>
+<a href="#" className="logo"> <span>car</span>Book </a>
 
 <nav className="navbar">
 <NavLink className="nav-link" to="/">Home</NavLink>

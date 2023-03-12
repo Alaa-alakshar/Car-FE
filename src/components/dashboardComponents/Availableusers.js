@@ -35,7 +35,15 @@ const Availableusers = () => {
       body: JSON.stringify({
         userIdFromDashBoard,
       }),
-    });
+    }).then(async (res) => {
+      if (res.ok) {
+        const deletedUser = await res.json();
+        const users = [...getUsers];
+        const filteredUser = users.filter((_) => _._id != deletedUser._id);
+        setGetUsers(filteredUser);
+      }
+    })
+    .catch((e) => console.log(e));
   };
 
   const Loginbutton = () => {
@@ -67,7 +75,7 @@ const Availableusers = () => {
       <div className="sidebar">
         <div className="logo-details">
           <i className=""></i>
-          <span className="logo_name1">Bike</span>
+          <span className="logo_name1">car</span>
           <span className="logo_name">Book</span>
         </div>
         <ul className="nav-links">
@@ -84,15 +92,15 @@ const Availableusers = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink className="dashlinks" to="/getrentbikesforadmin">
-              <i class="fa-sharp fa-solid fa-motorcycle"></i>
+            <NavLink className="dashlinks" to="/getrentcarsforadmin">
+              <i class="fa-sharp fa-solid fa-car"></i>
               <span className="allLinks_name">Available Rent Cars</span>
             </NavLink>
           </li>
           <li>
-            <NavLink className="dashlinks" to="/rentbikesreports">
+            <NavLink className="dashlinks" to="/rentcarsreports">
               <i class="fa-solid fa-sack-dollar"></i>
-              <span className="allLinks_name">Rent Bikes Income</span>
+              <span className="allLinks_name">Rent cars Income</span>
             </NavLink>
           </li>
           <li>
